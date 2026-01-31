@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Character Counter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      width: 320px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    h3 {
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      resize: none;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .count {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .limit {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h3>Character Counter</h3>
+
+  <textarea id="text" maxlength="1000"
+    oninput="countChars()"
+    placeholder="Type here..."></textarea>
+
+  <div id="counter" class="count">0 / 1000</div>
+</div>
+
+<script>
+  function countChars() {
+    let text = document.getElementById("text").value;
+    let counter = document.getElementById("counter");
+
+    counter.innerText = text.length + " / 1000";
+
+    if (text.length === 1000) {
+      counter.classList.add("limit");
+    } else {
+      counter.classList.remove("limit");
+    }
+  }
+</script>
+
+</body>
+</html>
